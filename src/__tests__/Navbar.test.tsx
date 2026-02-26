@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 describe("Navbar", () => {
   it("renders the logo", () => {
     render(<Navbar />);
-    expect(screen.getByText("TM")).toBeInTheDocument();
+    expect(screen.getByText("SM")).toBeInTheDocument();
   });
 
   it("renders all nav links", () => {
@@ -26,7 +26,7 @@ describe("Navbar", () => {
     const toggle = screen.getByLabelText("Toggle menu");
 
     // Mobile menu not visible initially
-    expect(screen.queryByText("Services")?.closest(".md\\:hidden .px-6")).toBeNull;
+    expect(screen.queryByText("Services")?.closest(".md\\:hidden .px-6")).toBeNull();
 
     // Open menu
     fireEvent.click(toggle);
