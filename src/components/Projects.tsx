@@ -16,7 +16,7 @@ const projects = [
     description:
       "Full-stack PC hardware store with product catalog, cart, wishlist, multi-step checkout, and a Claude-powered AI shopping assistant.",
     tags: ["Next.js", "React 19", "TypeScript", "Claude AI"],
-    link: "#",
+    link: "https://techforge-demo.vercel.app",
     gradient: "from-white/[0.03] to-white/[0.01]",
   },
   {
