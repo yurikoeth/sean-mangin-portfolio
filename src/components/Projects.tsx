@@ -17,6 +17,7 @@ const projects = [
       "Full-stack PC hardware store with product catalog, cart, wishlist, multi-step checkout, and a Claude-powered AI shopping assistant.",
     tags: ["Next.js", "React 19", "TypeScript", "Claude AI"],
     link: "https://techforge-demo.vercel.app",
+    image: "/images/techforge.png",
     gradient: "from-white/[0.03] to-white/[0.01]",
   },
   {
@@ -70,26 +71,34 @@ export default function Projects() {
               }`}
               style={{ transitionDelay: visible ? `${i * 150 + 200}ms` : "0ms" }}
             >
-              {/* Project thumbnail placeholder */}
+              {/* Project thumbnail */}
               <div
                 className={`bg-gradient-to-br ${project.gradient} border border-neutral-800/60 rounded-xl h-48 mb-4 flex items-center justify-center group-hover:border-neutral-600 transition-colors overflow-hidden relative`}
               >
-                <div className="relative z-10 text-neutral-600 font-mono text-sm flex flex-col items-center gap-2">
-                  <svg
-                    className="w-10 h-10 text-neutral-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  Screenshot coming soon
-                </div>
+                {"image" in project && project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="relative z-10 text-neutral-600 font-mono text-sm flex flex-col items-center gap-2">
+                    <svg
+                      className="w-10 h-10 text-neutral-700"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Screenshot coming soon
+                  </div>
+                )}
               </div>
 
               <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-neutral-300 transition-colors">
