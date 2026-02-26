@@ -12,10 +12,10 @@ const projects = [
     gradient: "from-white/[0.04] to-white/[0.01]",
   },
   {
-    title: "AI-Powered E-Commerce Store",
+    title: "TechForge — AI-Powered E-Commerce Store",
     description:
-      "Full-stack shopping experience with an AI assistant that helps customers find products.",
-    tags: ["React", "AI/ML", "Stripe", "Node.js"],
+      "Full-stack PC hardware store with product catalog, cart, wishlist, multi-step checkout, and a Claude-powered AI shopping assistant.",
+    tags: ["Next.js", "React 19", "TypeScript", "Claude AI"],
     link: "#",
     gradient: "from-white/[0.03] to-white/[0.01]",
   },
