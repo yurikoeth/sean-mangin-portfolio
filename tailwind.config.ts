@@ -9,8 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        dark: {
+          950: "#000000",
+          900: "#050505",
+          800: "#0a0a0a",
+          700: "#111111",
+          600: "#1a1a1a",
+        },
+        accent: {
+          DEFAULT: "#ffffff",
+          dark: "#d4d4d4",
+          muted: "#737373",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
       },
     },
   },
