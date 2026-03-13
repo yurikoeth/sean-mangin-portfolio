@@ -22,11 +22,12 @@ const projects = [
     gradient: "from-white/[0.03] to-white/[0.01]",
   },
   {
-    title: "Business Landing Page",
+    title: "Coastal Kitchen — Restaurant Landing Page",
     description:
-      "Clean, conversion-focused site for a local business. Mobile-first, fast-loading, SEO-optimized.",
-    tags: ["Next.js", "Tailwind", "SEO", "Performance"],
-    link: "#",
+      "Modern seafood restaurant site with menu, reservations, testimonials, and location info. Mobile-first with scroll animations.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Responsive"],
+    link: "https://coastal-kitchen.vercel.app",
+    image: "/images/coastal-kitchen.png",
     gradient: "from-white/[0.05] to-white/[0.02]",
   },
 ];
