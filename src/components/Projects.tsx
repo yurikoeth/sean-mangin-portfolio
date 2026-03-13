@@ -7,8 +7,9 @@ const projects = [
     title: "Appointment Booking System",
     description:
       "Custom scheduling platform for service businesses. Clients book online, manage appointments, and get confirmations — no monthly subscription fees.",
-    tags: ["Next.js", "TypeScript", "Database", "Auth"],
-    link: "#",
+    tags: ["Next.js", "TypeScript", "Supabase", "Auth"],
+    link: "https://booking-system-nine-beta.vercel.app",
+    image: "/images/booking-system.png",
     gradient: "from-white/[0.04] to-white/[0.01]",
   },
   {
