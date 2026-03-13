@@ -65,6 +65,8 @@ export default function Projects() {
             <a
               key={project.title}
               href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`group block transition-all duration-500 ${
                 visible
                   ? "opacity-100 translate-y-0"
