@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -16,6 +18,38 @@ export default function Contact() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.error || "Failed to send message.");
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setStatus("error");
+    }
+  }
 
   return (
     <section id="contact" ref={sectionRef} className="py-24 px-6">
@@ -35,9 +69,24 @@ export default function Contact() {
           </p>
         </div>
 
+        {status === "success" ? (
+          <div
+            className={`text-center py-12 transition-all duration-700 delay-200 ${
+              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="text-green-400 text-lg font-semibold mb-2">Message sent!</div>
+            <p className="text-neutral-500 text-sm mb-6">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+            <button
+              onClick={() => setStatus("idle")}
+              className="text-sm text-neutral-400 hover:text-white transition-colors underline underline-offset-4"
+            >
+              Send another message
+            </button>
+          </div>
+        ) : (
         <form
-          action="https://formspree.io/f/placeholder"
-          method="POST"
+          onSubmit={handleSubmit}
           className={`space-y-5 transition-all duration-700 delay-200 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
@@ -81,13 +130,18 @@ export default function Contact() {
               placeholder="Tell me about your project..."
             />
           </div>
+          {status === "error" && (
+            <p className="text-red-400 text-sm">{errorMsg}</p>
+          )}
           <button
             type="submit"
-            className="w-full bg-white hover:bg-neutral-200 text-black font-semibold py-3.5 rounded-lg transition-colors"
+            disabled={status === "sending"}
+            className="w-full bg-white hover:bg-neutral-200 text-black font-semibold py-3.5 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Message
+            {status === "sending" ? "Sending..." : "Send Message"}
           </button>
         </form>
+        )}
 
         {/* Links */}
         <div

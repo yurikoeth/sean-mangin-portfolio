@@ -17,11 +17,24 @@ export const metadata: Metadata = {
   title: "Sean Mangin — Web Developer & IT Support",
   description:
     "I build fast, modern websites and AI-powered tools for businesses that want to stand out online.",
+  metadataBase: new URL("https://seanmangin.com"),
   openGraph: {
     title: "Sean Mangin — Web Developer & IT Support",
     description:
       "I build fast, modern websites and AI-powered tools for businesses that want to stand out online.",
     type: "website",
+    url: "https://seanmangin.com",
+    siteName: "Sean Mangin",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sean Mangin — Web Developer & IT Support",
+    description:
+      "I build fast, modern websites and AI-powered tools for businesses that want to stand out online.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

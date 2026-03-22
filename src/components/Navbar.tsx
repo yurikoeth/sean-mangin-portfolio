@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
-          href="#"
+          href="#top"
           className="text-xl font-bold text-white tracking-tight hover:text-neutral-400 transition-colors"
         >
           SM<span className="text-neutral-500">.</span>

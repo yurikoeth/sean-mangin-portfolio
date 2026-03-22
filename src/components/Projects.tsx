@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -80,10 +81,12 @@ export default function Projects() {
                 className={`bg-gradient-to-br ${project.gradient} border border-neutral-800/60 rounded-xl h-48 mb-4 flex items-center justify-center group-hover:border-neutral-600 transition-colors overflow-hidden relative`}
               >
                 {"image" in project && project.image ? (
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
                   <div className="relative z-10 text-neutral-600 font-mono text-sm flex flex-col items-center gap-2">
